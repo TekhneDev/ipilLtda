@@ -4,6 +4,8 @@
  */
 package br.unidf;
 
+import br.unidf.UI.frmPrincipal;
+
 /**
  *
  * @author Carla && Taui
@@ -14,6 +16,8 @@ public class IpilLtda {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        frmPrincipal fp = new frmPrincipal();
+        fp.setVisible(true);
+
     }    
 }

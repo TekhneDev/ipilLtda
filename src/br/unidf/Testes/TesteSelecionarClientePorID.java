@@ -15,7 +15,7 @@ public class TesteSelecionarClientePorID {
     public static void main(String[ ] args) throws Exception
     {
         ClienteDAL dal = new ClienteDAL();
-        ClienteDTO cliente = dal.selecionarClientePorID(9);
+        ClienteDTO cliente = dal.selecionarClientePorID(12);
         System.out.println("Codigo: " + cliente.getCliID());
         System.out.println("Nome Cliente: " + cliente.getCliNome());
         System.out.println("Dt. Inclusão: " + cliente.getCliDtInclusao());

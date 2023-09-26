@@ -4,9 +4,21 @@
  */
 package br.unidf.UI;
 
+import br.unidf.DAL.ClienteDAL;
+import br.unidf.DTO.ClienteDTO;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
- * @author carla
+ * @author Carla && Taui
  */
 public class frmClientes extends javax.swing.JFrame {
 
@@ -26,12 +38,26 @@ public class frmClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel8 = new javax.swing.JLabel();
+        btnIncluirCli = new javax.swing.JButton();
+        ftfTelefoneCli = new javax.swing.JFormattedTextField();
+        btnAlterarCli = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        btnExcluirCli = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        txtCidadeCli = new javax.swing.JTextField();
+        txtUFCli = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        btnMostrarTodosCli = new javax.swing.JButton();
         txtCodigoIDCli = new javax.swing.JTextField();
-        btnPesquisarCliID = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        dgvClientes = new javax.swing.JTable();
+        btnLimparCli = new javax.swing.JButton();
+        btnPesquisarCliID = new javax.swing.JButton();
+        btnSairCli = new javax.swing.JButton();
         txtNomeCli = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         ftfDtInclusaoCli = new javax.swing.JFormattedTextField();
@@ -41,92 +67,21 @@ public class frmClientes extends javax.swing.JFrame {
         txtBairroCli = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtEmailCli = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        ftfTelefoneCli = new javax.swing.JFormattedTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txtCidadeCli = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        txtUFCli = new javax.swing.JTextField();
-        btnIncluirCli = new javax.swing.JButton();
-        btnAlterarCli = new javax.swing.JButton();
-        btnExcluirCli = new javax.swing.JButton();
-        btnMostrarTodosCli = new javax.swing.JButton();
-        btnLimparCli = new javax.swing.JButton();
-        btnSairCli = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        dgvClientes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Cadastro de Clientes");
         setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 153, 255));
-        jLabel1.setText("Cadastro de Clientes");
+        jLabel8.setText("Telefone");
 
-        jLabel2.setText("Código(ID)");
-
-        btnPesquisarCliID.setMnemonic('P');
-        btnPesquisarCliID.setText("Pesquisar");
-
-        jLabel3.setText("Nome do Cliente");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(txtNomeCli)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(txtCodigoIDCli, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnPesquisarCliID)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCodigoIDCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisarCliID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jLabel4.setText("Data de Inclusão");
-
-        ftfDtInclusaoCli.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        ftfDtInclusaoCli.addActionListener(new java.awt.event.ActionListener() {
+        btnIncluirCli.setMnemonic('I');
+        btnIncluirCli.setText("Incluir");
+        btnIncluirCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftfDtInclusaoCliActionPerformed(evt);
+                btnIncluirCliActionPerformed(evt);
             }
         });
-
-        jLabel5.setText("Endereço");
-
-        jLabel6.setText("Bairro");
-
-        jLabel7.setText("E-mail");
-
-        jLabel8.setText("Telefone");
 
         try {
             ftfTelefoneCli.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-#####")));
@@ -134,44 +89,113 @@ public class frmClientes extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jLabel9.setText("Cidade");
-
-        jLabel10.setText("UF");
-
-        txtUFCli.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterarCli.setMnemonic('A');
+        btnAlterarCli.setText("Alterar");
+        btnAlterarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUFCliActionPerformed(evt);
+                btnAlterarCliActionPerformed(evt);
             }
         });
 
-        btnIncluirCli.setMnemonic('I');
-        btnIncluirCli.setText("Incluir");
-        btnIncluirCli.setToolTipText("");
-
-        btnAlterarCli.setMnemonic('A');
-        btnAlterarCli.setText("Alterar");
+        jLabel9.setText("Cidade");
 
         btnExcluirCli.setMnemonic('E');
         btnExcluirCli.setText("Excluir");
+        btnExcluirCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirCliActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("UF");
+
+        jLabel2.setText("Código(ID)");
+
+        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel1.setText("Cadastro de Clientes");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(333, 333, 333))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1))
+        );
 
         btnMostrarTodosCli.setMnemonic('M');
         btnMostrarTodosCli.setText("Mostrar Todos");
+        btnMostrarTodosCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarTodosCliActionPerformed(evt);
+            }
+        });
 
-        btnLimparCli.setMnemonic('L');
-        btnLimparCli.setText("Limpar");
-
-        btnSairCli.setMnemonic('S');
-        btnSairCli.setText("Sair");
+        jLabel3.setText("Nome do Cliente");
 
         dgvClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
                 "Código (ID)", "Nome", "Data Inclusão", "Endereço", "Bairro", "E-mail", "Telefone", "Cidade", "UF"
             }
         ));
+        dgvClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dgvClientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(dgvClientes);
+
+        btnLimparCli.setMnemonic('L');
+        btnLimparCli.setText("Limpar");
+        btnLimparCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparCliActionPerformed(evt);
+            }
+        });
+
+        btnPesquisarCliID.setMnemonic('P');
+        btnPesquisarCliID.setText("Pesquisar");
+        btnPesquisarCliID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarCliIDActionPerformed(evt);
+            }
+        });
+
+        btnSairCli.setMnemonic('S');
+        btnSairCli.setText("Sair");
+        btnSairCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairCliActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Data de Inclusão");
+
+        try {
+            ftfDtInclusaoCli.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        ftfDtInclusaoCli.setToolTipText("");
+
+        jLabel5.setText("Endereço");
+
+        jLabel6.setText("Bairro");
+
+        jLabel7.setText("E-mail");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,91 +203,131 @@ public class frmClientes extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(ftfDtInclusaoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtEnderecoCli)
-                        .addContainerGap())))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtCodigoIDCli, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnPesquisarCliID))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(4, 4, 4)
+                                                .addComponent(jLabel7))
+                                            .addComponent(txtEmailCli, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(3, 3, 3)
+                                                .addComponent(ftfTelefoneCli, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(11, 11, 11)
+                                                .addComponent(jLabel9))
+                                            .addComponent(txtCidadeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel10)
+                                            .addComponent(txtUFCli, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(txtEnderecoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtBairroCli, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(txtNomeCli))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ftfDtInclusaoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))))
+                        .addGap(16, 16, 16))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtBairroCli, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtEmailCli))
-                .addGap(6, 6, 6))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ftfTelefoneCli, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(txtCidadeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUFCli)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
+                .addGap(108, 108, 108)
                 .addComponent(btnIncluirCli)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAlterarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAlterarCli)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnExcluirCli, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                .addComponent(btnExcluirCli)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMostrarTodosCli)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLimparCli)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSairCli)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftfDtInclusaoCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEnderecoCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBairroCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmailCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftfTelefoneCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCidadeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUFCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodigoIDCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarCliID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ftfDtInclusaoCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtEnderecoCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addGap(35, 35, 35))
+                                .addComponent(txtBairroCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtEmailCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ftfTelefoneCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtUFCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCidadeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIncluirCli)
@@ -272,21 +336,317 @@ public class frmClientes extends javax.swing.JFrame {
                     .addComponent(btnMostrarTodosCli)
                     .addComponent(btnLimparCli)
                     .addComponent(btnSairCli))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ftfDtInclusaoCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfDtInclusaoCliActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ftfDtInclusaoCliActionPerformed
+    private void btnIncluirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirCliActionPerformed
+        //Abrindo a conexão com o Banco de Dados
+        ClienteDAL dal = new ClienteDAL();
+        try
+        {
+            dal.abrirBD();
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(frmClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // instanciando a classe ClienteDTO do pacote DTO e criando seu objeto cliente
+        ClienteDTO cliente = new ClienteDTO();
+        cliente.setCliNome(txtNomeCli.getText());
+        //Data localdate, convertida para a data no banco MySQL
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+        LocalDate dataFormatada = LocalDate.parse(ftfDtInclusaoCli.getText(), dtf); 
+        cliente.setCliDtInclusao(dataFormatada);
+        cliente.setCliEndereco(txtEnderecoCli.getText());
+        cliente.setCliBairro(txtBairroCli.getText());
+        cliente.setCliEmail(txtEmailCli.getText());
+        cliente.setCliTel(ftfTelefoneCli.getText());
+        cliente.setCliCidade(txtCidadeCli.getText());
+        cliente.setCliUF(txtUFCli.getText());
+        // fazendo a validação dos dados
+        if ((txtNomeCli.getText().isEmpty()) || (ftfDtInclusaoCli.getText().isEmpty()) || (txtEnderecoCli.getText().isEmpty()) || (txtBairroCli.getText().isEmpty()) || (ftfTelefoneCli.getText().isEmpty())|| (txtCidadeCli.getText().isEmpty())|| (txtUFCli.getText().isEmpty()))
+        {
+            JOptionPane.showMessageDialog(null, "Os campos não podem estar vazios !!!!");
+            txtNomeCli.requestFocus();
+        }
+        else
+        {
+            try {
+                // Instancia a classe ClienteDAL e chama o método incluirCliente
+                dal.incluirCliente(cliente);
+                JOptionPane.showMessageDialog(null, "Usuário " + txtNomeCli.getText() + " incluído com sucesso! ");
+                dal.fecharBD();
+                txtNomeCli.requestFocus();
+                btnMostrarTodosCli.setEnabled(true);
+            } catch (Exception ex)
+            {
+                Logger.getLogger(frmClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        // apaga os dados preenchidos nos campos de texto
+        txtBairroCli.setText("");
+        txtCidadeCli.setText("");
+        txtCodigoIDCli.setText("");
+        txtEmailCli.setText("");
+        txtEnderecoCli.setText("");
+        txtNomeCli.setText("");
+        txtUFCli.setText("");
+        ftfDtInclusaoCli.setText(null);
+        ftfTelefoneCli.setText(null);
 
-    private void txtUFCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUFCliActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUFCliActionPerformed
+    }//GEN-LAST:event_btnIncluirCliActionPerformed
+
+    private void btnAlterarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarCliActionPerformed
+        // fazendo a validação dos dados, o método isEmpty que devolve true se a String for vazia ou false se a mesma nã estiver vazia
+        if ((txtNomeCli.getText().isEmpty()) || (ftfDtInclusaoCli.getText().isEmpty()) || (txtEnderecoCli.getText().isEmpty()) 
+                || (txtBairroCli.getText().isEmpty()) || (ftfTelefoneCli.getText().isEmpty()) || (txtCidadeCli.getText().isEmpty()) 
+                || (txtUFCli.getText().isEmpty()))
+        {
+            JOptionPane.showMessageDialog(null, "Verifique Se Tem Algum Campo Vazio !!!!");
+            //O cursor do mouse vai se posicionado no campo Código do Cliente
+            txtCodigoIDCli.requestFocus();
+        }
+        else 
+        {
+            // instanciando a classe ClientesDTO do pacote DTO e criando seu objeto cliente
+            ClienteDTO cliente = new ClienteDTO();
+            // Instancia a classe ClienteDAL 
+            ClienteDAL dal = new ClienteDAL();
+            cliente.setCliID(Long.parseLong(txtCodigoIDCli.getText()));
+            cliente.setCliNome(txtNomeCli.getText());
+            //Data localdate, convertida para a data no banco MySQL
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+            LocalDate dataFormatada = LocalDate.parse(ftfDtInclusaoCli.getText(), dtf); 
+            cliente.setCliDtInclusao(dataFormatada);
+            //Mostra os dados que estão gravados na tabela Clientes
+            cliente.setCliEndereco(txtEnderecoCli.getText());
+            cliente.setCliBairro(txtBairroCli.getText());
+            cliente.setCliEmail(txtEmailCli.getText());
+            cliente.setCliTel(ftfTelefoneCli.getText());
+            cliente.setCliCidade(txtCidadeCli.getText());
+            cliente.setCliUF(txtUFCli.getText());
+            try
+            {
+                // Chama o método alterarCliente da Classe ClienteDAL
+                dal.alterarCliente(cliente);
+            }
+            catch (Exception ex)
+            {
+                Logger.getLogger(frmClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Cliente " + cliente.getCliNome() + " Alterado Com Sucesso !!!!");
+        }
+
+    }//GEN-LAST:event_btnAlterarCliActionPerformed
+
+    private void btnExcluirCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCliActionPerformed
+        //Verifica se os campos estão preenchidos    
+        if (((txtNomeCli.getText().isEmpty()) || (ftfDtInclusaoCli.getText().isEmpty()) || (txtEnderecoCli.getText().isEmpty())
+                || (txtBairroCli.getText().isEmpty()) || (ftfTelefoneCli.getText().isEmpty()) || (txtCidadeCli.getText().isEmpty())
+                || (txtUFCli.getText().isEmpty()) || (txtCodigoIDCli.getText().isEmpty()))) {
+            JOptionPane.showMessageDialog(null, "Verifique Se Tem Algum Campo Vazio !!!!");
+            txtCodigoIDCli.requestFocus();
+        }
+        else
+        {
+            // instanciando a classe clientesDTO do pacote DTO e criando seu objeto cliente        
+            ClienteDTO cliente = new ClienteDTO();
+            cliente.setCliID(Long.parseLong(txtCodigoIDCli.getText()));
+            Object[] opcoes = {"Sim", "Não"};
+            int contador = JOptionPane.showOptionDialog(null, "Deseja Excluir Este Cliente: " + txtNomeCli.getText() + "?",
+                    "Exclusão", JOptionPane.YES_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
+            if (contador == JOptionPane.YES_OPTION) {
+                try
+                {
+                    ClienteDAL dal = new ClienteDAL();
+                    dal.excluirCliente(Integer.valueOf(txtCodigoIDCli.getText()));
+                    JOptionPane.showMessageDialog(null, "Cliente Excluído com Sucesso !!!!");
+                    // apaga os dados preenchidos nos campos de texto abaixo
+                    txtCodigoIDCli.setText(null);
+                    txtNomeCli.setText("");
+                    ftfDtInclusaoCli.setText(null);
+                    txtEnderecoCli.setText("");
+                    txtBairroCli.setText("");
+                    txtEmailCli.setText("");
+                    ftfTelefoneCli.setText(null);
+                    txtCidadeCli.setText("");
+                    txtUFCli.setText("");
+                    txtCodigoIDCli.requestFocus();
+                }
+                catch (Exception ex)
+                {
+                    Logger.getLogger(frmClientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }//GEN-LAST:event_btnExcluirCliActionPerformed
+
+    private void btnMostrarTodosCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodosCliActionPerformed
+        //Limpa todas as caixas de texto
+        txtBairroCli.setText("");
+        txtCidadeCli.setText("");
+        txtCodigoIDCli.setText("");
+        txtEmailCli.setText("");
+        txtEnderecoCli.setText("");
+        txtNomeCli.setText("");
+        txtUFCli.setText("");
+        ftfDtInclusaoCli.setText(null);
+        ftfTelefoneCli.setText(null);
+        // instanciando a classe clientesDAL
+        ClienteDAL cliente = new ClienteDAL();
+        //Cria a lista de todos os clientes dentro da tabela Clientes
+        List<ClienteDTO> selecionaTodosClientes = new ArrayList<>();
+        try
+        {
+            //Chama o método selecionaTodosClientes da Classe ClientesDAL e preeche
+            //o mesmo com a lista de todos os clientes.
+            selecionaTodosClientes = cliente.selecionarListaClientes();
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(frmClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //Prepara a tabela para receber os dados da busca(Lista)
+        DefaultTableModel tabm = (DefaultTableModel)dgvClientes.getModel();
+        for(int contador = tabm.getRowCount()-1; contador >=0; contador--)
+        {
+            tabm.removeRow(contador);
+        }
+        int contador = 0;
+        for(ClienteDTO clientes : selecionaTodosClientes)
+        {
+            //Mostra as informações dentro da Tabela
+            tabm.addRow(new String[1]);
+            dgvClientes.setValueAt(clientes.getCliID(), contador, 0);
+            dgvClientes.setValueAt(clientes.getCliNome(),contador, 1);
+            //Formata a data do banco, para localdate
+            dgvClientes.setValueAt(clientes.getCliDtInclusao(), contador, 2);
+            dgvClientes.setValueAt(clientes.getCliEndereco(), contador, 3);
+            dgvClientes.setValueAt(clientes.getCliBairro(), contador, 4);
+            dgvClientes.setValueAt(clientes.getCliEmail(), contador, 5);
+            dgvClientes.setValueAt(clientes.getCliTel(), contador, 6);
+            dgvClientes.setValueAt(clientes.getCliCidade(), contador, 7);
+            dgvClientes.setValueAt(clientes.getCliUF(), contador, 8);        
+            contador++;
+        }
+        //Limpa o campo Código do Cliente
+        txtCodigoIDCli.setText(null);
+        //Posiciona o cursor do mouse no campo Nome do cliente
+        txtNomeCli.requestFocus();
+
+    }//GEN-LAST:event_btnMostrarTodosCliActionPerformed
+
+    private void btnLimparCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCliActionPerformed
+        //Limpa os campos do formulário e do grid ou tabela 
+        btnIncluirCli.setEnabled(true);
+        btnAlterarCli.setEnabled(false);
+        btnExcluirCli.setEnabled(false);
+        btnMostrarTodosCli.setEnabled(true);
+        txtBairroCli.setText("");
+        txtCidadeCli.setText("");
+        txtCodigoIDCli.setText("");
+        txtEmailCli.setText("");
+        txtEnderecoCli.setText("");
+        txtNomeCli.setText("");
+        txtUFCli.setText("");
+        ftfDtInclusaoCli.setText(null);
+        ftfTelefoneCli.setText(null);
+        txtNomeCli.requestFocus();
+        DefaultTableModel tabm = (DefaultTableModel)dgvClientes.getModel();
+        for (int contador = tabm.getRowCount() -1; contador >= 0; contador--)
+        {
+            tabm.removeRow(contador);
+        }
+
+    }//GEN-LAST:event_btnLimparCliActionPerformed
+
+    private void btnSairCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairCliActionPerformed
+        // Fecha o formulário de clientes e volta para o formulário principal
+        dispose();
+
+    }//GEN-LAST:event_btnSairCliActionPerformed
+
+    private void btnPesquisarCliIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCliIDActionPerformed
+        //Verifica se o código do cliente está vazio
+        if ("".equals(txtCodigoIDCli.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "Código do Cliente não pode ser vazio, favor digite um código válido !!!!");
+            //Após a mensagem de erro, o foco do cursor vai ficar no campo Código do Cliente
+            txtCodigoIDCli.requestFocus();
+        }
+        else
+        {
+            //Faz o tratamento de erro, para verificar se a tabela Clientes está vazia
+            try
+            {
+                // instanciando a classe ClienteDTO do pacote DTO e criando seu objeto cliente
+                ClienteDTO cliente = new ClienteDTO();
+                // Instancia a classe ClientesDAL
+                ClienteDAL dal = new ClienteDAL();
+                //Formatando a data para ser exibida no formato Brasileiro
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                cliente = dal.selecionarClientePorID(Integer.valueOf(txtCodigoIDCli.getText()));
+                //O botão Incluir vai ficar dsesabilitado
+                btnIncluirCli.setEnabled(false);
+                //O botão Alterar vai ficar habilitado
+                btnAlterarCli.setEnabled(true);
+                //O botão Excluir vai ficar habilitado
+                btnExcluirCli.setEnabled(true);
+                //O botão Mostrar Todos vai ficar habilitado
+                btnMostrarTodosCli.setEnabled(true);
+                //Mostra os dados do Cliente pelo seu código
+                txtNomeCli.setText(cliente.getCliNome());
+                //Formatando a data do banco, para localdate
+                LocalDate date1 = cliente.getCliDtInclusao();
+                String text1 = date1.format(dtf);
+                ftfDtInclusaoCli.setText(text1);
+                txtEnderecoCli.setText(cliente.getCliEndereco());
+                txtBairroCli.setText(cliente.getCliBairro());
+                txtEmailCli.setText(cliente.getCliEmail());
+                ftfTelefoneCli.setText(cliente.getCliTel());
+                txtCidadeCli.setText(cliente.getCliCidade());
+                txtUFCli.setText(cliente.getCliUF());
+            }
+            catch(Exception ex)
+            {
+                JOptionPane.showMessageDialog(null, "Cliente Não Encontrado. Favor Tente Novamente !!!!");
+                txtCodigoIDCli.setText(null);
+                txtCodigoIDCli.requestFocus();
+            }
+        }
+
+    }//GEN-LAST:event_btnPesquisarCliIDActionPerformed
+
+    private void dgvClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dgvClientesMouseClicked
+        // Preenche o Grid com os dados gravados na tabela clientes do MySQL
+        //Formatando a data do banco, para localdate
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("d/MM/uuuu");
+        String text = date.format(formatters);    
+        int linhaSelecionada = dgvClientes.getSelectedRow();
+        txtCodigoIDCli.setText(dgvClientes.getValueAt(linhaSelecionada, 0).toString());
+        txtNomeCli.setText(dgvClientes.getValueAt(linhaSelecionada, 1).toString());
+        LocalDate date1 = (LocalDate) dgvClientes.getValueAt(linhaSelecionada, 2);
+        String text1 = date1.format(formatters);
+        ftfDtInclusaoCli.setText(text1);
+        txtEnderecoCli.setText(dgvClientes.getValueAt(linhaSelecionada, 3).toString());
+        txtBairroCli.setText(dgvClientes.getValueAt(linhaSelecionada, 4).toString());
+        txtEmailCli.setText(dgvClientes.getValueAt(linhaSelecionada, 5).toString());
+        ftfTelefoneCli.setText(dgvClientes.getValueAt(linhaSelecionada, 6).toString());
+        txtCidadeCli.setText(dgvClientes.getValueAt(linhaSelecionada, 7).toString());
+        txtUFCli.setText(dgvClientes.getValueAt(linhaSelecionada, 8).toString());
+        btnIncluirCli.setEnabled(false);
+        btnAlterarCli.setEnabled(true);
+        btnExcluirCli.setEnabled(true);
+
+    }//GEN-LAST:event_dgvClientesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -313,6 +673,69 @@ public class frmClientes extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(frmClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

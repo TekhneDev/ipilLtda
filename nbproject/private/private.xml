@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/temp/ACADEMICO/ipilLtda/src/br/unidf/Testes/TesteAlterarCliente.java</file>
+            <file>file:/C:/temp/ACADEMICO/ipilLtda/src/br/unidf/Testes/TesteSelecionarClientePorID.java</file>
+            <file>file:/C:/temp/ACADEMICO/ipilLtda/src/br/unidf/UI/frmClientes.java</file>
+            <file>file:/C:/temp/ACADEMICO/ipilLtda/src/br/unidf/IpilLtda.java</file>
+            <file>file:/C:/temp/ACADEMICO/ipilLtda/src/br/unidf/DTO/ClienteDTO.java</file>
+            <file>file:/C:/temp/ACADEMICO/ipilLtda/src/br/unidf/Testes/TesteExcluirCliente.java</file>
+            <file>file:/C:/temp/ACADEMICO/ipilLtda/src/br/unidf/UI/frmPrincipal.java</file>
+            <file>file:/C:/temp/ACADEMICO/ipilLtda/src/br/unidf/DAL/ConexaoMySQL.java</file>
+            <file>file:/C:/temp/ACADEMICO/ipilLtda/src/br/unidf/DAL/ClienteDAL.java</file>
+            <file>file:/C:/temp/ACADEMICO/ipilLtda/src/br/unidf/Testes/TesteIncluir.java</file>
+        </group>
     </open-files>
 </project-private>

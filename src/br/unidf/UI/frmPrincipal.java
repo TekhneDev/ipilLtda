@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author carla
+ * @author Carla && Taui
  */
 public class frmPrincipal extends javax.swing.JFrame {
 
@@ -30,7 +30,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblFundoIpil = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         mnuAplicativoIpil = new javax.swing.JMenu();
         itmSairIpil = new javax.swing.JMenuItem();
@@ -41,8 +40,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         setTitle("Imaginária Produtos de Informática Ltda - IPIL");
         setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         setResizable(false);
-
-        lblFundoIpil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/unidf/UI/ipil.jpg"))); // NOI18N
 
         mnuAplicativoIpil.setMnemonic('f');
         mnuAplicativoIpil.setText("Aplicativo Ipil Ltda");
@@ -63,6 +60,11 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         itmCadClientesIpil.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         itmCadClientesIpil.setText("Clientes");
+        itmCadClientesIpil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmCadClientesIpilActionPerformed(evt);
+            }
+        });
         mnuCadastrosIpil.add(itmCadClientesIpil);
 
         menuBar.add(mnuCadastrosIpil);
@@ -73,11 +75,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblFundoIpil, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 679, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblFundoIpil, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 379, Short.MAX_VALUE)
         );
 
         pack();
@@ -85,11 +87,22 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itmSairIpilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmSairIpilActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Deseja Sair do Sistema?", "Aplicativo Ipil Ltda", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-            {
-                this.dispose();
-            }
+        if (JOptionPane.showConfirmDialog(null, "Deseja Sair do Sistema? ", "Aplicativo Ipil Ltda", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        {
+            this.dispose();
+        }
     }//GEN-LAST:event_itmSairIpilActionPerformed
+
+    private void itmCadClientesIpilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmCadClientesIpilActionPerformed
+        //Verfica se o formulário é nulo e está visivel
+        if ((frmClientes == null) || (!frmClientes.isVisible()))
+        {
+            frmClientes = new frmClientes();
+            //jdpCadCli.add(frmClientes);
+            frmClientes.setVisible(true);
+        }
+
+    }//GEN-LAST:event_itmCadClientesIpilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,6 +130,7 @@ public class frmPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -129,7 +143,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem itmCadClientesIpil;
     private javax.swing.JMenuItem itmSairIpil;
-    private javax.swing.JLabel lblFundoIpil;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu mnuAplicativoIpil;
     private javax.swing.JMenu mnuCadastrosIpil;
@@ -138,5 +151,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void inserirIcone() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("iconCliente.png")));
     }
+    private frmClientes frmClientes;    
 
 }
